@@ -31,7 +31,7 @@ git clone git@github.com:mohamednaser/Weather.git
 
 ## Live Version
 
-Live version [TBE].
+Live version [TBA].
 
 ## ScreenShots
 
