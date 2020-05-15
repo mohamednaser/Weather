@@ -1272,6 +1272,18 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 
 /***/ }),
 
+/***/ "./src/domMiddleMan.js":
+/*!*****************************!*\
+  !*** ./src/domMiddleMan.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst domElments = {\n  cityName: document.getElementById(\"city-name-h1\"),\n  temp: document.getElementById(\"temp\"),\n  wind: document.getElementById(\"wind\"),\n  humid: document.getElementById(\"humid\"),\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (domElments);\n\n\n//# sourceURL=webpack:///./src/domMiddleMan.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -1280,7 +1292,7 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _openWeather__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./openWeather */ \"./src/openWeather.js\");\n\n\nconst places = __webpack_require__(/*! places.js */ \"./node_modules/places.js/index.js\");\nlet currentUserCity = \"london\";\n\nvar placesAutocomplete = places({\n  appId: \"plS7X61ESP3G\",\n  apiKey: \"ac24a5c7aad117e8c12eb6c0f4a8a8de\",\n  type: \"city\",\n  templates: {\n    value: function (suggestion) {\n      return suggestion.name;\n    },\n  },\n  container: document.querySelector(\"#address-input\"),\n}).configure({\n  type: \"address\",\n});\n\nplacesAutocomplete.on(\"change\", function resultSelected(e) {\n  currentUserCity = e.suggestion.city;\n  Object(_openWeather__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(currentUserCity).then(loadCityWeatherData).catch(handleError);\n});\n\nfunction loadCityWeatherData(response) {\n  console.log(response.data, \"weather data\");\n}\n\nfunction handleError(error) {\n  console.log(\"handle Errors \", error);\n}\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _openWeather__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./openWeather */ \"./src/openWeather.js\");\n/* harmony import */ var _domMiddleMan__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./domMiddleMan */ \"./src/domMiddleMan.js\");\n\n\n\nconst places = __webpack_require__(/*! places.js */ \"./node_modules/places.js/index.js\");\nlet currentUserCity = \"london\";\n\nvar placesAutocomplete = places({\n  appId: \"plS7X61ESP3G\",\n  apiKey: \"ac24a5c7aad117e8c12eb6c0f4a8a8de\",\n  type: \"city\",\n  templates: {\n    value: function (suggestion) {\n      return suggestion.name;\n    },\n  },\n  container: document.querySelector(\"#address-input\"),\n}).configure({\n  type: \"address\",\n});\n\nplacesAutocomplete.on(\"change\", function resultSelected(e) {\n  currentUserCity = e.suggestion.city;\n  loadCityWeatherData(currentUserCity);\n  _domMiddleMan__WEBPACK_IMPORTED_MODULE_1__[\"default\"].cityName.innerHTML = `Weather in ${currentUserCity}`;\n});\n\nfunction loadCityWeatherData() {\n  _domMiddleMan__WEBPACK_IMPORTED_MODULE_1__[\"default\"].cityName.innerHTML = `Weather in ${currentUserCity}`;\n  Object(_openWeather__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(currentUserCity).then(appendDomData).catch(handleError);\n}\n\nfunction appendDomData(response) {\n  console.log(\"loadCityWeatherData\", response);\n\n  _domMiddleMan__WEBPACK_IMPORTED_MODULE_1__[\"default\"].temp.innerHTML = `${response.data.main.temp} °`;\n  _domMiddleMan__WEBPACK_IMPORTED_MODULE_1__[\"default\"].wind.innerHTML = `${response.data.wind.speed} km/h`;\n  _domMiddleMan__WEBPACK_IMPORTED_MODULE_1__[\"default\"].humid.innerHTML = `${response.data.main.humidity} %`;\n}\n\nfunction handleError(error) {\n  console.log(\"handle Errors \", error);\n}\n\nloadCityWeatherData(currentUserCity);\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -1292,7 +1304,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ope
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconst axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\nconst appID = \"8aedef77b7c96cb9f3cf8d7b2e9c9012\";\n\nfunction getCityWeather(city = \"london\") {\n  return axios.get(\n    `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${appID}`\n  );\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (getCityWeather);\n\n\n//# sourceURL=webpack:///./src/openWeather.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nconst axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\nconst appID = \"8aedef77b7c96cb9f3cf8d7b2e9c9012\";\n\nfunction getCityWeather(city = \"london\") {\n  return axios.get(\n    `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${appID}`\n  );\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (getCityWeather);\n\n\n//# sourceURL=webpack:///./src/openWeather.js?");
 
 /***/ })
 

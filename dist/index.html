@@ -26,16 +26,19 @@
           placeholder="Where are we going?"
         />
       </div>
-      <div class="weather-details">
-        <div class="flex flex-space-between">
-          <div class="flex">
-            <p id="city">Paris</p>
-            <p id="country">FR</p>
-          </div>
-          <div>
-            <img class="icon" id="icon" src="./imgs/sun.svg" alt="" />
-            <p id="weather-description">clear sky</p>
-          </div>
+      <div class="weather-card">
+        <h1 id="city-name-h1">Weather in Egypte </h1>
+         <div class="weather-div">
+          <img class="icon" id="icon" src="./imgs/sun.svg" alt="" />
+          <p id="weather-description">clear sky</p>
+         </div> 
+         <div class="weather-details">
+          <ul class="list" class="visible">
+            <li><img class="icon" src="./imgs/temperature.svg"  />&nbsp;<span id="temp">5.93 °</span></li>
+            <li><img class="icon" src="./imgs/wind.svg"  />&nbsp;<span id="wind">1 km/h</span></li>
+            <li><img class="icon" src="./imgs/humidity.png"  />&nbsp;<span id="humid">60 %</span></li>
+          </ul>
+         </div>
         </div>
       </div>
     </div>
