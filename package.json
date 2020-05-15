@@ -19,6 +19,9 @@
   "homepage": "https://github.com/mohamednaser/Weather#readme",
   "dependencies": {
     "axios": "^0.19.2",
+    "eslint": "^7.0.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
     "places.js": "^1.18.2"
   },
   "devDependencies": {
