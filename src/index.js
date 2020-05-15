@@ -1,31 +1,31 @@
-var places = require("places.js");
+import getCityWeather from "./openWeather";
+
+const places = require("places.js");
+let currentUserCity = "london";
+
 var placesAutocomplete = places({
   appId: "plS7X61ESP3G",
   apiKey: "ac24a5c7aad117e8c12eb6c0f4a8a8de",
   type: "city",
   templates: {
     value: function (suggestion) {
-      console.log("suestions ", suggestion);
       return suggestion.name;
     },
   },
   container: document.querySelector("#address-input"),
-})
-  .configure({
-    type: "address",
-  })
-  .on("change", function resultSelected(e) {
-    console.log(e.suggestion, "address details");
-    // document.querySelector('#form-address2').value = e.suggestion.administrative || '';
-    // document.querySelector('#form-city').value = e.suggestion.city || '';
-    // document.querySelector('#form-zip').value = e.suggestion.postcode || '';
-  });
-
-placesAutocomplete.on("change", function resultSelected(e) {
-  console.log(e.suggestion, "address details");
-  // document.querySelector('#form-address2').value = e.suggestion.administrative || '';
-  // document.querySelector('#form-city').value = e.suggestion.city || '';
-  // document.querySelector('#form-zip').value = e.suggestion.postcode || '';
+}).configure({
+  type: "address",
 });
 
-console.log("all places details ", placesAutocomplete);
+placesAutocomplete.on("change", function resultSelected(e) {
+  currentUserCity = e.suggestion.city;
+  getCityWeather(currentUserCity).then(loadCityWeatherData).catch(handleError);
+});
+
+function loadCityWeatherData(response) {
+  console.log(response.data, "weather data");
+}
+
+function handleError(error) {
+  console.log("handle Errors ", error);
+}

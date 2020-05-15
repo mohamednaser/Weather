@@ -1,0 +1,24 @@
+.ap-suggestion {
+  text-align: left !important;
+}
+
+.weather-details {
+  border-style: ridge;
+  border-color: coral;
+  border-width: 7px;
+  width: 40%;
+  margin: auto;
+  height: 20%;
+}
+
+.icon {
+  width: 15%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-space-between {
+  justify-content: space-between;
+}
