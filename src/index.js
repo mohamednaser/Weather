@@ -1,6 +1,7 @@
 import getCityWeather from './openWeather';
 import domElments from './domMiddleMan';
 
+/* eslint import/no-unresolved: 2 */
 const places = require('places.js');
 
 let currentUserCity = 'london';
