@@ -1,0 +1,28 @@
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "Simple Weather Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack src/index.js dist/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohamednaser/Weather.git"
+  },
+  "author": "n.naser",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohamednaser/Weather/issues"
+  },
+  "homepage": "https://github.com/mohamednaser/Weather#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "places.js": "^1.18.2"
+  },
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
