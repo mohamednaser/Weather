@@ -3,6 +3,7 @@ const domElments = {
   temp: document.getElementById('temp'),
   wind: document.getElementById('wind'),
   humid: document.getElementById('humid'),
+  switcher: document.getElementById('switcher'),
 };
 
 export default domElments;
